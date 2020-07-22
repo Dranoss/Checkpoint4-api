@@ -1,9 +1,9 @@
 package com.mysecretgarden.api.webServices.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class CardType {
@@ -11,8 +11,13 @@ public class CardType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private String color;
+
+    @OneToMany(mappedBy = "cardType",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference(value = "cardByType")
+    private List<Card> cards;
 
     public CardType() {
     }
