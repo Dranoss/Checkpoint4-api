@@ -1,4 +1,4 @@
-package com.mysecretgarden.api.webServices.entity;
+package com.mysecretgarden.api.webServices.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,15 +6,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class CardType {
+public class Card {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String color;
+    private User user;
+    private CardType cardType;
 
-    public CardType() {
+    public Card() {
     }
 
     public Long getId() {
@@ -33,11 +34,19 @@ public class CardType {
         this.name = name;
     }
 
-    public String getColor() {
-        return color;
+    public User getUser() {
+        return user;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public CardType getCardType() {
+        return cardType;
+    }
+
+    public void setCardType(CardType cardType) {
+        this.cardType = cardType;
     }
 }

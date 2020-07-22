@@ -1,4 +1,4 @@
-package com.mysecretgarden.api.webServices.controller;
+package com.mysecretgarden.api.webServices.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

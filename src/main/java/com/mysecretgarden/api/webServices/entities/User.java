@@ -1,4 +1,4 @@
-package com.mysecretgarden.api.webServices.entity;
+package com.mysecretgarden.api.webServices.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

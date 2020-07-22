@@ -1,7 +1,7 @@
-package com.mysecretgarden.api.webServices.service;
+package com.mysecretgarden.api.webServices.services;
 
-import com.mysecretgarden.api.webServices.entity.Card;
-import com.mysecretgarden.api.webServices.repository.CardRepository;
+import com.mysecretgarden.api.webServices.entities.Card;
+import com.mysecretgarden.api.webServices.repositories.CardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
