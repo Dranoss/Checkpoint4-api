@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-public class User implements UserDetails {
+public class Guardian implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,14 +20,14 @@ public class User implements UserDetails {
     private String username;
     private String password;
     private String profilePicture;
-    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "userCard")
+    @OneToMany(mappedBy = "guardian",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference(value = "guardianCard")
     private List<Card> cards;
 
-    public User() {
+    public Guardian() {
     }
 
-    public <T> User(String username, String password, Long id, List<T> emptyList) {
+    public <T> Guardian(String username, String password, Long id, List<T> emptyList) {
         this.username = username;
         this.password = password;
         this.id = id;

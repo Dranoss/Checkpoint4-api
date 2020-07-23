@@ -1,6 +1,6 @@
 package com.mysecretgarden.api.webServices.services;
 
-import com.mysecretgarden.api.webServices.entities.User;
+import com.mysecretgarden.api.webServices.entities.Guardian;
 import com.mysecretgarden.api.webServices.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,12 +19,12 @@ public class UserService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public List<User> getAll(){
+    public List<Guardian> getAll(){
         return userRepository.findAll();
     }
 
-    public User findUserById(Long id){
-        Optional<User> optionalUser = userRepository.findById(id);
+    public Guardian findUserById(Long id){
+        Optional<Guardian> optionalUser = userRepository.findById(id);
         if(optionalUser.isPresent()){
             return optionalUser.get();
         }
@@ -32,20 +32,20 @@ public class UserService {
                 HttpStatus.PRECONDITION_FAILED);
     }
 
-    public User saveUser(User user){
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        return userRepository.save(user);
+    public Guardian saveUser(Guardian guardian){
+        guardian.setPassword(bCryptPasswordEncoder.encode(guardian.getPassword()));
+        return userRepository.save(guardian);
     }
 
-    public User updateUser(User user, Long id){
-        if(id == user.getId()) {
-            User updatedUser = userRepository.findById(id).get();
-            updatedUser.setFirstName(user.getFirstName());
-            updatedUser.setLastName(user.getLastName());
-            updatedUser.setRole(user.getRole());
-            updatedUser.setUsername(user.getUsername());
-            updatedUser.setProfilePicture(user.getProfilePicture());
-            return userRepository.save(updatedUser);
+    public Guardian updateUser(Guardian guardian, Long id){
+        if(id == guardian.getId()) {
+            Guardian updatedGuardian = userRepository.findById(id).get();
+            updatedGuardian.setFirstName(guardian.getFirstName());
+            updatedGuardian.setLastName(guardian.getLastName());
+            updatedGuardian.setRole(guardian.getRole());
+            updatedGuardian.setUsername(guardian.getUsername());
+            updatedGuardian.setProfilePicture(guardian.getProfilePicture());
+            return userRepository.save(updatedGuardian);
         }
         throw new ResponseStatusException(
                 HttpStatus.PRECONDITION_FAILED);

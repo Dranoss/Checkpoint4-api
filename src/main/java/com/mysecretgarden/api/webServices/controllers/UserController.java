@@ -1,6 +1,6 @@
 package com.mysecretgarden.api.webServices.controllers;
 
-import com.mysecretgarden.api.webServices.entities.User;
+import com.mysecretgarden.api.webServices.entities.Guardian;
 import com.mysecretgarden.api.webServices.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,23 +15,23 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
-    public List<User> getUsers(){
+    public List<Guardian> getUsers(){
         return userService.getAll();
     }
 
     @GetMapping(value = "/{id}")
-    public User getUserById(@PathVariable Long id){
+    public Guardian getUserById(@PathVariable Long id){
         return userService.findUserById(id);
     }
 
     @PostMapping(value = "/sign-up")
-    public User postUser(@RequestBody User user){
-        return userService.saveUser(user);
+    public Guardian postUser(@RequestBody Guardian guardian){
+        return userService.saveUser(guardian);
     }
 
     @PutMapping(value = "/{id}")
-    public User putUser(@RequestBody User user, @PathVariable Long id){
-        return userService.updateUser(user, id);
+    public Guardian putUser(@RequestBody Guardian guardian, @PathVariable Long id){
+        return userService.updateUser(guardian, id);
     }
 
     @DeleteMapping(value = "/{id}")
