@@ -19,7 +19,7 @@ public class Guardian implements UserDetails {
     private String username;
     private String password;
     private String profilePicture;
-    @OneToMany(mappedBy = "guardian",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "guardian",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonManagedReference(value = "guardianCard")
     private List<Card> cards;
 

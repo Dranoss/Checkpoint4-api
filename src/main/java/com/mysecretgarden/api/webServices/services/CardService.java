@@ -36,6 +36,7 @@ public class CardService {
         if(id == card.getId()){
             Card cardUpdated = cardRepository.findById(id).get();
             cardUpdated.setName(card.getName());
+            cardUpdated.setContent(card.getContent());
             //cardUpdated.setCardType(card.getCardType());
             return cardRepository.save(cardUpdated);
         }

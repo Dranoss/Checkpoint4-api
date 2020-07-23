@@ -15,7 +15,7 @@ public class CardType {
     private String name;
     private String color;
 
-    @OneToMany(mappedBy = "cardType",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cardType",fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonManagedReference(value = "cardByType")
     private List<Card> cards;
 
