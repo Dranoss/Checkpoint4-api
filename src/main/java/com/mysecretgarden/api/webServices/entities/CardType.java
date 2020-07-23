@@ -45,4 +45,12 @@ public class CardType {
     public void setColor(String color) {
         this.color = color;
     }
+
+    public List<Card> getCards() {
+        return cards;
+    }
+
+    public void setCards(List<Card> cards) {
+        this.cards = cards;
+    }
 }

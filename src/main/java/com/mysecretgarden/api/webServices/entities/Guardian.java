@@ -16,7 +16,6 @@ public class Guardian implements UserDetails {
     private Long id;
     private String firstName;
     private String lastName;
-    private String role;
     private String username;
     private String password;
     private String profilePicture;
@@ -55,14 +54,6 @@ public class Guardian implements UserDetails {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
     }
 
     public String getUsername() {
@@ -121,4 +112,5 @@ public class Guardian implements UserDetails {
     public void setCards(List<Card> cards) {
         this.cards = cards;
     }
+
 }

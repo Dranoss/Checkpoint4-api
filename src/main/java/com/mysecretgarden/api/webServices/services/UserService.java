@@ -4,6 +4,8 @@ import com.mysecretgarden.api.webServices.entities.Guardian;
 import com.mysecretgarden.api.webServices.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -18,6 +20,13 @@ public class UserService {
     private UserRepository userRepository;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    public Guardian getMe() {
+        Authentication authentication = (Authentication) SecurityContextHolder.getContext().getAuthentication();
+        Guardian guardian = (Guardian) authentication.getPrincipal();
+        return guardian;
+        }
+
 
     public List<Guardian> getAll(){
         return userRepository.findAll();
@@ -42,7 +51,6 @@ public class UserService {
             Guardian updatedGuardian = userRepository.findById(id).get();
             updatedGuardian.setFirstName(guardian.getFirstName());
             updatedGuardian.setLastName(guardian.getLastName());
-            updatedGuardian.setRole(guardian.getRole());
             updatedGuardian.setUsername(guardian.getUsername());
             updatedGuardian.setProfilePicture(guardian.getProfilePicture());
             return userRepository.save(updatedGuardian);

@@ -5,6 +5,7 @@ import com.mysecretgarden.api.webServices.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -13,6 +14,13 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @GetMapping("/me")
+    public Guardian getMe() {
+        Guardian guardian = userService.getMe();
+        guardian.setCards(new ArrayList<>());
+        return guardian;
+    }
 
     @GetMapping
     public List<Guardian> getUsers(){
