@@ -13,9 +13,9 @@ public class Card {
     private String name;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonBackReference(value = "userCard")
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JsonBackReference(value = "guardianCard")
+    @JoinColumn(name = "guardian_id")
+    private Guardian guardian;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonBackReference(value = "cardByType")
